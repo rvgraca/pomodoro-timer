@@ -14,9 +14,18 @@
     <header class="header">
         <h1>Pomodoro timer</h1>
     </header>
-    <div class="container">
+    <div class="pomodoroContainer">
+        <div id="timerDisplay">25:00</div>
+        <button id="start">Start</button>
+        <button id="pause">Pause</button>
+        <button id="reset">Reset</button>
     </div>
 
+    <div class="configContainer">
+        <div class="workConfiguration">Work Configuration</div>
+        <div class="breakConfiguration">Break Configuration</div>
+        <button class="acceptChanges">Accept Changes</button>
+    </div>
     <!-- JS principal -->
     <script type="module" src="./js/main.js"></script>
 </body>

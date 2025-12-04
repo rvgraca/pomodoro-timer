@@ -18,7 +18,7 @@ header {
 }
 
 /* ====== CONTENEDOR PRINCIPAL ====== */
-.container {
+.pomodoroContainer {
     margin: 60px auto;
     padding: 30px;
     background: #ffffff;
@@ -29,4 +29,8 @@ header {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
+}
+
+.pomodoroContainer {
+    
 }
