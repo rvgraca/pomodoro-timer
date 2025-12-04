@@ -1,18 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!--META TAGS-->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!--TITLE-->
     <title>Proyecto Base</title>
 
-    <!-- CSS principal -->
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--CSS LINKS-->
     <link rel="stylesheet" href="./styles/globals.css" />
     <link rel="stylesheet" href="./css/main.css" />
+
 </head>
 <body>
 
     <header class="header">
         <h1>Pomodoro timer</h1>
+        <div class="selectMode">
+            <label>
+                <input type="radio" name="pomodoroOption" value="1" checked>
+                <span>Pomodoro</span>
+            </label>
+
+            <label>
+                <input type="radio" name="pomodoroOption" value="2">
+                <span>Short break</span>
+            </label>
+
+            <label>
+                <input type="radio" name="pomodoroOption" value="3">
+                <span>Long break</span>
+            </label>
+        </div>
     </header>
     <div class="pomodoroContainer">
         <div id="timerDisplay">25:00</div>
@@ -22,9 +45,42 @@
     </div>
 
     <div class="configContainer">
-        <div class="workConfiguration">Work Configuration</div>
-        <div class="breakConfiguration">Break Configuration</div>
-        <button class="acceptChanges">Accept Changes</button>
+
+        <div class="timeConfiguration">
+            <label>
+                Pomodoro [min]
+                <input type="text">
+            </label>
+            
+            <label>
+                Short break [min]
+                <input type="text">
+            </label>
+            
+            <label>
+                Long break [min]
+                <input type="text">
+            </label>
+        </div>
+
+        <div class="otherConfig">
+            <div class="switch-wrapper">
+                <span class="switch-text">Toggle sound</span>
+
+                <label class="switch">
+                    <input type="checkbox" id="toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="switch-wrapper">
+                <span class="switch-text">Use pomodoro sequence</span>
+
+                <label class="switch">
+                    <input type="checkbox" id="toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
     </div>
     <!-- JS principal -->
     <script type="module" src="./js/main.js"></script>
