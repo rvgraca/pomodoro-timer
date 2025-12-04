@@ -19,7 +19,9 @@
 <body>
 
     <header class="header">
-        <h1>Pomodoro timer</h1>
+        <div class="title">
+            <h1>Pomodoro timer</h1>
+        </div>
         <div class="selectMode">
             <label>
                 <input type="radio" name="pomodoroOption" value="1" checked>
@@ -38,10 +40,10 @@
         </div>
     </header>
     <div class="pomodoroContainer">
-        <div id="timerDisplay">25:00</div>
-        <button id="start">Start</button>
-        <button id="pause">Pause</button>
-        <button id="reset">Reset</button>
+        <div id="timerDisplay"><p>25:00</p></div>
+        <button class="pomodoroActionButton" id="start">Start</button>
+        <button class="pomodoroActionButton" id="pause">Pause</button>
+        <button class="pomodoroActionButton" id="reset">Reset</button>
     </div>
 
     <div class="configContainer">
@@ -49,38 +51,42 @@
         <div class="timeConfiguration">
             <label>
                 Pomodoro [min]
-                <input type="text">
+                <input type="text" placeholder="25">
             </label>
             
             <label>
                 Short break [min]
-                <input type="text">
+                <input type="text" placeholder="5">
             </label>
             
             <label>
                 Long break [min]
-                <input type="text">
+                <input type="text" placeholder="20">
             </label>
         </div>
 
         <div class="otherConfig">
-            <div class="switch-wrapper">
+
+            <label class="switch-row">
                 <span class="switch-text">Toggle sound</span>
 
-                <label class="switch">
-                    <input type="checkbox" id="toggle">
+                <span class="switch">
+                    <input type="checkbox" id="toggle1">
                     <span class="slider"></span>
-                </label>
-            </div>
-            <div class="switch-wrapper">
+                </span>
+            </label>
+
+            <label class="switch-row">
                 <span class="switch-text">Use pomodoro sequence</span>
 
-                <label class="switch">
-                    <input type="checkbox" id="toggle">
+                <span class="switch">
+                    <input type="checkbox" id="toggle2">
                     <span class="slider"></span>
-                </label>
-            </div>
+                </span>
+            </label>
+
         </div>
+
     </div>
     <!-- JS principal -->
     <script type="module" src="./js/main.js"></script>
