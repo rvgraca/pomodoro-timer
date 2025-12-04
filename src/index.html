@@ -12,47 +12,9 @@
 <body>
 
     <header class="header">
-        <h1>Password Checker</h1>
+        <h1>Pomodoro timer</h1>
     </header>
     <div class="container">
-        
-        <form id="passwordForm">
-            <div class="input-group">
-                <label for="passwordInput">Introduce tu contraseña</label>
-                <input type="password" id="passwordInput" class="inputText" aria-describedby="passwordRules">
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="showPasswordCheckbox" class="checkboxStyle">
-                <label for="showPasswordCheckbox">Mostrar Contraseña</label>
-            </div>
-            
-            <p id="validationMessage" role="alert" aria-live="polite">Introduce una contraseña para verificar su fortaleza.</p>
-            
-            <label for="passwordProgress">Fortaleza:</label>
-            <progress id="passwordProgress" value="0" max="100">0</progress>
-            <label for="passwordProgress" id="passwordProgressValue" >0%:</label>
-            
-            <input type="submit" disabled=true name="" id="passwordSubmit">
-
-
-
-            <details id="passwordRules">
-                <summary>Requisitos de Contraseña</summary>
-                <div class="passwordRules">
-                    <ul>
-                        <li id="rule-length">Debe tener una longitud mínima de <b>12</b> caracteres</li>
-                        <li id="rule-uppercase">Debe contener al menos una <b>mayúscula</b></li>
-                        <li id="rule-lowercase">Debe contener al menos una <b>minúscula</b></li>
-                        <li id="rule-special">Debe contener al menos un <b>caracter especial</b></li>
-                        <li id="rule-number">Debe contener al menos un <b>número</b></li>
-                        <li id="rule-pattern">No debe seguir un <b>patrón obvio</b>(ej: 123, abc, etc.)</li>
-                    </ul>
-                </div>
-            </details>
-
-        </form>
-
     </div>
 
     <!-- JS principal -->
