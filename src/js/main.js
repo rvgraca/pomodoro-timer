@@ -7,6 +7,9 @@ import { state } from "./modules/state.js";
 
 
 let intervalId = null;
+let playSound = true;
+let pomodoroSequence = true;
+
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
@@ -27,8 +30,8 @@ const longBreakTime = document.getElementById("longBreakTime");
 
 
 
-const toggle1Button = document.getElementById("toggle1");
-const toggle2Button = document.getElementById("toggle2");
+const toggleSoundButton = document.getElementById("toggle1");
+const togglePomodoroSequence = document.getElementById("toggle2");
 
 
 const MODES = {
@@ -41,6 +44,10 @@ const MODES = {
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
 resetButton.addEventListener("click", resetTimer);
+
+toggleSoundButton.addEventListener("change", () => {playSound = !playSound});
+togglePomodoroSequence.addEventListener("change", () => {pomodoroSequence = !pomodoroSequence});
+
 
 document.querySelectorAll('input[name="pomodoroOption"]').forEach(radio => {
     radio.addEventListener("change", (e) => {
@@ -68,35 +75,40 @@ function handleModeChange(mode) {
 
 function updateTimerUI() {
     if (state.minutes === 0 && state.seconds === 0) {
-        switch (state.currentMode) {
-            case "1":
-                state.completedPomodoros++;
-                if (state.completedPomodoros > 3) {
-                    state.currentMode = "3";
-                    longBreakStatus.checked = true;
-                    state.minutes = parsePomodoroInput(longBreakTime.value) ?? 20;
+        if (!pomodoroSequence) {
+            pauseTimer();
+        } else {
+            switch (state.currentMode) {
+                case "1":
+                    state.completedPomodoros++;
+                    if (state.completedPomodoros > 3) {
+                        state.currentMode = "3";
+                        longBreakStatus.checked = true;
+                        state.minutes = parsePomodoroInput(longBreakTime.value) ?? 20;
 
-                } else {
-                    state.currentMode = "2";
-                    shortBreakStatus.checked = true;
-                    state.minutes = parsePomodoroInput(shortBreakTime.value) ?? 5;
-                }
-                break;
-            
-            case "2":
-                state.currentMode = "1";
-                pomodoroStatus.checked = true;
-                state.minutes = parsePomodoroInput(pomodoroTime.value) ?? 25;
+                    } else {
+                        state.currentMode = "2";
+                        shortBreakStatus.checked = true;
+                        state.minutes = parsePomodoroInput(shortBreakTime.value) ?? 5;
+                    }
+                    break;
                 
-                break;
-            
-            case "3":
-                state.completedPomodoros = 0;
-                state.currentMode = "1";
-                pomodoroStatus.checked = true;
-                state.minutes = parsePomodoroInput(pomodoroTime.value) ?? 25;
-                break;
+                case "2":
+                    state.currentMode = "1";
+                    pomodoroStatus.checked = true;
+                    state.minutes = parsePomodoroInput(pomodoroTime.value) ?? 25;
+                    
+                    break;
+                
+                case "3":
+                    state.completedPomodoros = 0;
+                    state.currentMode = "1";
+                    pomodoroStatus.checked = true;
+                    state.minutes = parsePomodoroInput(pomodoroTime.value) ?? 25;
+                    break;
+            }
         }
+        if (playSound) playAlarm();
         handleModeChange(state.currentMode);
     } else {
         if (state.seconds === 0) {
@@ -137,4 +149,23 @@ function resetTimer() {
         state.minutes = parseInt(userInput);
         state.seconds = 0;
     }
+}
+
+
+function playBeep() {
+    const ctx = new AudioContext();
+    const osc = ctx.createOscillator();
+    osc.type = "sine";
+    osc.frequency.value = 880; // tono agudo
+    osc.connect(ctx.destination);
+    osc.start();
+    osc.stop(ctx.currentTime + 0.3); // dura 0.3s
+}
+
+
+const alarmSound = document.getElementById("alarmSound");
+
+function playAlarm() {
+    alarmSound.currentTime = 0;
+    alarmSound.play();
 }
