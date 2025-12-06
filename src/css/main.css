@@ -16,9 +16,13 @@ header .title {
     grid-column: 1 / span 3;
     grid-row: 1;
     display: flex;
+    flex-flow: column nowrap;
     justify-content: center;
-    padding: 20px;
     align-items: center;
+}
+
+header #workState {
+    color: #54BC73;
 }
 
 header .selectMode {
@@ -137,8 +141,8 @@ header .selectMode {
     justify-self: center;
     align-self: center;
     display: grid;
-    grid-template-columns: repeat(3, 85px);
-    grid-template-rows: repeat(3, 45);
+    grid-template-columns: 85px 140px 85px;
+    grid-template-rows: 60px 45px 45px;
 }
 
 .pomodoroActionButton {
@@ -162,20 +166,32 @@ header .selectMode {
     align-content: center;
 }
 
-.pomodoroContainer #start {
-    grid-column: 1 / span 1;
+.pomodoroContainer #pomodorosDisplay {
+    grid-column: 2 / span 1;
     grid-row: 2 / span 1;
+    align-self: center;
+    justify-self: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.pomodoroContainer #start {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 1;
+    justify-self: left;
 
 }
 
 .pomodoroContainer #pause {
-    grid-column: 2 / span 1;
-    grid-row: 2 / span 1;
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 1;
+    justify-self: center;
 }
 
 .pomodoroContainer #reset {
-    grid-column: 3 / span 1;
-    grid-row: 2 / span 1;
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 1;
+    justify-self: right;
     
 }
 
@@ -184,6 +200,7 @@ header .selectMode {
     grid-row: 1 / span 1;
     font-size: 50px;
 
+    font-weight: bold;
     justify-self: center;
     align-content: center;
 }

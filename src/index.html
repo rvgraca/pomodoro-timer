@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <!--CSS LINKS-->
-    <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="/styles/globals.css" />
+    <link rel="stylesheet" href="/css/main.css" />
 
 </head>
 <body>
@@ -21,6 +21,9 @@
     <header class="header">
         <div class="title">
             <h1>Pomodoro timer</h1>
+            <br>
+            <h1 id="workState">Work!</h1>
+
         </div>
         <div class="selectMode">
             <label>
@@ -40,7 +43,8 @@
         </div>
     </header>
     <div class="pomodoroContainer">
-        <div id="timerDisplay"><p>25:00</p></div>
+        <div id="timerDisplay">25:00</div>
+        <div id="pomodorosDisplay">Pomodoros: 0</div>
         <button class="pomodoroActionButton" id="start">Start</button>
         <button class="pomodoroActionButton" id="pause">Pause</button>
         <button class="pomodoroActionButton" id="reset">Reset</button>
@@ -51,17 +55,17 @@
         <div class="timeConfiguration">
             <label>
                 Pomodoro [min]
-                <input type="text" placeholder="25">
+                <input type="text" id="pomodoroTime" placeholder="25" value="25">
             </label>
             
             <label>
                 Short break [min]
-                <input type="text" placeholder="5">
+                <input type="text" id="shortBreakTime" placeholder="5" value="5">
             </label>
             
             <label>
                 Long break [min]
-                <input type="text" placeholder="20">
+                <input type="text" id="longBreakTime" placeholder="20" value="20">
             </label>
         </div>
 
@@ -89,6 +93,6 @@
 
     </div>
     <!-- JS principal -->
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
